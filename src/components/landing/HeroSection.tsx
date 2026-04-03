@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { Activity, BarChart3, Zap, ArrowRight } from "lucide-react";
+import { Activity, BarChart3, Zap, ArrowRight, Calendar } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import LeadCaptureForm from "./LeadCaptureForm";
 import heroBg from "@/assets/hero-bg.jpg";
 
@@ -98,6 +99,24 @@ const HeroSection = () => {
               </video>
               <div className="absolute inset-0 bg-gradient-to-t from-background/30 via-transparent to-transparent rounded-2xl pointer-events-none" />
             </div>
+
+            {/* CTA Button below video */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.0, duration: 0.6 }}
+              className="mt-5"
+            >
+              <Button
+                size="lg"
+                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-base py-6 rounded-xl glow-orange-subtle"
+                onClick={() => window.open("https://calendly.com", "_blank")}
+              >
+                <Calendar size={20} />
+                Book a Free Strategy Call
+                <ArrowRight size={18} />
+              </Button>
+            </motion.div>
 
             {/* Floating data overlays */}
             <FloatingCard className="absolute -top-4 -right-4 flex items-center gap-3" delay={0}>
