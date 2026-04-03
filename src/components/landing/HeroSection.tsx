@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { Activity, BarChart3, Zap, ArrowRight } from "lucide-react";
+import { Activity, BarChart3, Zap, ArrowRight, Calendar } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import LeadCaptureForm from "./LeadCaptureForm";
 import heroBg from "@/assets/hero-bg.jpg";
 
