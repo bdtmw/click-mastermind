@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import logo from "../../assets/logo.png";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -29,10 +30,9 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        <a href="#" className="text-xl font-bold tracking-tight">
-          Follow<span className="text-gradient">PerClick</span>
-          <span className="text-primary text-xs align-super">™</span>
-        </a>
+       <a href="#" className="flex items-center">
+  <img src={logo} alt="FollowPerClick logo" className="h-16 w-auto" />
+</a>
 
         <div className="hidden md:flex items-center gap-8">
           {links.map((l) => (
