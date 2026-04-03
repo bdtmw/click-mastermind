@@ -1,5 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { HelpCircle } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -18,10 +19,12 @@ const faqs = [
 
 const FAQSection = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="faq" className="section-padding" ref={ref}>
+    <section id="faq" className="section-padding relative" ref={ref}>
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
       <div className="max-w-3xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -29,8 +32,11 @@ const FAQSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <span className="text-sm font-semibold text-primary uppercase tracking-widest">FAQ</span>
-          <h2 className="text-4xl md:text-5xl font-black mt-4">
+          <span className="inline-flex items-center gap-2 text-xs font-bold text-primary uppercase tracking-[0.2em] bg-primary/10 rounded-full px-4 py-1.5 mb-6">
+            <HelpCircle size={12} />
+            FAQ
+          </span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mt-2 leading-tight">
             Got <span className="text-gradient">Questions?</span>
           </h2>
         </motion.div>
@@ -45,12 +51,12 @@ const FAQSection = () => {
               <AccordionItem
                 key={i}
                 value={`faq-${i}`}
-                className="glass-card rounded-xl px-6 border-0"
+                className="glass-card glass-card-hover rounded-xl px-6 border-0 transition-all duration-300"
               >
-                <AccordionTrigger className="text-left font-semibold hover:no-underline py-5">
+                <AccordionTrigger className="text-left font-semibold hover:no-underline py-5 text-sm md:text-base">
                   {faq.q}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground pb-5 leading-relaxed">
+                <AccordionContent className="text-muted-foreground pb-5 leading-relaxed text-sm">
                   {faq.a}
                 </AccordionContent>
               </AccordionItem>
