@@ -1,5 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import LeadCaptureForm from "./LeadCaptureForm";
 
 const CTASection = () => {
   const ref = useRef(null);
@@ -34,30 +35,9 @@ const CTASection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
         >
-          <a
-            href="#"
-            className="bg-primary text-primary-foreground px-10 py-4 rounded-xl text-lg font-bold glow-orange hover:scale-105 transition-transform duration-200"
-          >
-            Get My Traffic Audit
-          </a>
-          <a
-            href="#"
-            className="glass-card px-10 py-4 rounded-xl text-lg font-semibold hover:scale-105 transition-transform duration-200"
-          >
-            Book a Demo
-          </a>
+          <LeadCaptureForm variant="cta" />
         </motion.div>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.5, delay: 0.7 }}
-          className="text-sm text-muted-foreground mt-8"
-        >
-          No commitment required · Free audit · Setup in 24 hours
-        </motion.p>
       </div>
     </section>
   );
