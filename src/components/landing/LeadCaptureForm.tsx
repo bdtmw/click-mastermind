@@ -7,15 +7,48 @@ interface LeadCaptureFormProps {
 }
 
 const LeadCaptureForm = ({ variant = "hero" }: LeadCaptureFormProps) => {
-  const [formData, setFormData] = useState({ name: "", email: "", website: "" });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    website: "",
+  });
+
   const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
     if (!formData.name.trim() || !formData.email.trim()) return;
+
     setStatus("loading");
-    // Simulate submission
-    setTimeout(() => setStatus("success"), 1500);
+
+    try {
+      const response = await fetch(
+        "https://services.leadconnectorhq.com/hooks/suAZp50xNC77tiayOgih/webhook-trigger/ec711152-1337-4971-b2bc-cd979450f813",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            website: formData.website,
+          }),
+        }
+      );
+
+      if (response.ok) {
+        setStatus("success");
+      } else {
+        setStatus("idle");
+        alert("Submission failed");
+      }
+    } catch (error) {
+      console.error("Webhook error:", error);
+      setStatus("idle");
+      alert("Something went wrong");
+    }
   };
 
   if (status === "success") {
@@ -23,7 +56,9 @@ const LeadCaptureForm = ({ variant = "hero" }: LeadCaptureFormProps) => {
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className={`glass-card rounded-2xl p-8 text-center ${variant === "cta" ? "max-w-lg mx-auto" : ""}`}
+        className={`glass-card rounded-2xl p-8 text-center ${
+          variant === "cta" ? "max-w-lg mx-auto" : ""
+        }`}
       >
         <CheckCircle className="text-primary mx-auto mb-4" size={40} />
         <h3 className="text-xl font-bold mb-2">You're In!</h3>
