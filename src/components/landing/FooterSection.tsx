@@ -10,7 +10,7 @@ const FooterSection = () => {
               <img
                 src={logo}
                 alt="FollowPerClick logo"
-                className="h-16 w-16 object-contain"
+                className="h-46 w-46 object-contain"
               />
             </a>
             <p className="text-sm text-muted-foreground mt-5">

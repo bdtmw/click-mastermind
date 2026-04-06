@@ -110,7 +110,7 @@ const HeroSection = () => {
               <Button
                 size="lg"
                 className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-base py-6 rounded-xl glow-orange-subtle"
-                onClick={() => window.open("https://calendly.com", "_blank")}
+                onClick={() => window.open("https://calendly.com/derickdowns", "_blank")}
               >
                 <Calendar size={20} />
                 Book a Free Strategy Call
